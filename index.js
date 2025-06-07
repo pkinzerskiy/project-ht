@@ -1,0 +1,7 @@
+import{a as c}from"./assets/vendor-B2YOV0tR.js";(function(){const s=document.createElement("link").relList;if(s&&s.supports&&s.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))i(t);new MutationObserver(t=>{for(const e of t)if(e.type==="childList")for(const n of e.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function o(t){const e={};return t.integrity&&(e.integrity=t.integrity),t.referrerPolicy&&(e.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?e.credentials="include":t.crossOrigin==="anonymous"?e.credentials="omit":e.credentials="same-origin",e}function i(t){if(t.ep)return;t.ep=!0;const e=o(t);fetch(t.href,e)}})();async function l(r,s){const t="https://sound-wave.b.goit.study/api"+"/artists",e=await c(t,{params:{limit:s,page:r}});return{totalArtists:e.data.totalArtists,artists:e.data.artists}}let u=1;const d=8,a=document.querySelector(".art-list-card");console.log(a);const f=async()=>{try{const r=await l(u,d);p(r.artists)}catch(r){console.log("Помилка в getListArtist:",r)}};f();function p(r){let s=r.map(({strArtist:o,strBiographyEN:i,strArtistThumb:t,genres:e})=>`<li class="art-item">
+                <img class="art-img" src="${t}" alt="${o}" />
+                <ul class="genreList"><li>${e.join().replaceAll(",","</li><li>")}</li></ul>             
+                <h4>${o}</h4>
+                <p>${i}</p>
+     `).join("");console.log("markup:",s),a.insertAdjacentHTML("beforeend",s)}
+//# sourceMappingURL=index.js.map
